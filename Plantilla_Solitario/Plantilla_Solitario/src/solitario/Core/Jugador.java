@@ -5,7 +5,7 @@
  */
 package solitario.Core;
 // SOMOZA ERES UN IMBERBE DE MERDA
-/**
+/**manupe cagon
  *
  * @author AEDI
  */
