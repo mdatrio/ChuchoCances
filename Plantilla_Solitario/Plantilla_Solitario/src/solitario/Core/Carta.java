@@ -40,7 +40,7 @@ public class Carta {
         return "Carta{" + "numero=" + numero + ", palo=" + palo + '}';
     }
    
-    
+    //Las cartas son los padres
 
 
 }
