@@ -8,23 +8,23 @@ package solitario.Core;
 import java.util.ArrayList;
 import java.util.Random;
 import solitario.Core.Carta.tipoPalo;
-
+import pila.*;
 public class Baraja {
 
-    private ArrayList<Carta> barajas = new ArrayList<>();
+    private EnlazadaPila<Carta> barajas = new EnlazadaPila();
     private final int NUMCARTAS = 48;
     private int numElem;
 
     public Baraja() {
-        barajas = new ArrayList<>(NUMCARTAS);
+        barajas=new EnlazadaPila();
         numElem = 0;
     }
 
-    public ArrayList<Carta> getBarajas() {
+    public EnlazadaPila<Carta> getBarajas() {
         return barajas;
     }
 
-    public void setBarajas(ArrayList<Carta> barajas) {
+    public void setBarajas(EnlazadaPila<Carta> barajas) {
         this.barajas = barajas;
     }
 
@@ -47,26 +47,29 @@ public class Baraja {
     public void crearCartas() {
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j <= 12; j++) {
+                /*if(j==8 || j==9){
+                j++;
+                }*/
                 switch (i) {
                     case 0:
                         Carta c = new Carta(j, tipoPalo.BASTOS);
                         c.setPalo(tipoPalo.BASTOS);
-                        barajas.add(c);
+                        barajas.push(c);
                         break;
                     case 1:
                         Carta d = new Carta(j, tipoPalo.COPAS);
                         d.setPalo(tipoPalo.COPAS);
-                        barajas.add(d);
+                        barajas.push(d);
                         break;
                     case 2:
                         Carta e = new Carta(j, tipoPalo.ESPADAS);
                         e.setPalo(tipoPalo.ESPADAS);
-                        barajas.add(e);
+                        barajas.push(e);
                         break;
                     case 3:
                         Carta f = new Carta(j, tipoPalo.OROS);
                         f.setPalo(tipoPalo.OROS);
-                        barajas.add(f);
+                        barajas.push(f);
                         break;
 
                 }
@@ -77,21 +80,28 @@ public class Baraja {
 
     public void barajarCartas() {
         Random rd = new Random();
-        ArrayList<Carta> aux = new ArrayList<>();
+        
+        EnlazadaPila<Carta> aux = new EnlazadaPila();
+        ArrayList<Carta> toret=new ArrayList();
         for (int i = 0; i < NUMCARTAS; i++) {
-            int j = rd.nextInt(barajas.size());
-            aux.add(barajas.get(j));
-            barajas.remove(j);
+            int j = rd.nextInt(barajas.tamaño());
+            toret.add(j, barajas.top());
+            barajas.pop();
 
         }
-        barajas = aux;
+       for(int j=0;j<toret.size();j++){
+       barajas.push(toret.get(j));
+       
+       }
+        
 
     }
 
     public String toString() {
         StringBuilder build = new StringBuilder();
-        for (int i = 0; i < barajas.size(); i++) {
-            build.append(barajas.get(i) + "\n");
+        for (int i = 0; i < NUMCARTAS; i++) {
+            build.append(barajas.top() + "\n");
+            barajas.pop();
         }
         return build.toString();
     }
