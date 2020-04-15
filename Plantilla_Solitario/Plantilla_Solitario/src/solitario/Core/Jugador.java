@@ -10,8 +10,28 @@ package solitario.Core;
  * @author AEDI
  */
 public class Jugador {
-	
-	
+    String nombre;
+    boolean ganador;
+    public Jugador(String nom){
+    this.nombre=nom;
+    ganador=false;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public boolean isGanador() {
+        return ganador;
+    }
+
+    public void setGanador(boolean ganador) {
+        this.ganador = ganador;
+    }
 
 }
 

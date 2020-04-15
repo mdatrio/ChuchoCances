@@ -12,7 +12,7 @@ import pila.*;
 public class Baraja {
 
     private EnlazadaPila<Carta> barajas = new EnlazadaPila();
-    private final int NUMCARTAS = 48;
+    private final int NUMCARTAS = 40;
     private int numElem;
 
     public Baraja() {
@@ -54,7 +54,7 @@ public class Baraja {
                     case 0:
                         Carta c = new Carta(j, tipoPalo.BASTOS);
                         c.setPalo(tipoPalo.BASTOS);
-                        barajas.push(c);
+                        barajas.push(c); 
                         break;
                     case 1:
                         Carta d = new Carta(j, tipoPalo.COPAS);
@@ -79,21 +79,7 @@ public class Baraja {
     }
 
     public void barajarCartas() {
-        Random rd = new Random();
-        
-        EnlazadaPila<Carta> aux = new EnlazadaPila();
-        ArrayList<Carta> toret=new ArrayList();
-        for (int i = 0; i < NUMCARTAS; i++) {
-            int j = rd.nextInt(barajas.tamaño());
-            toret.add(j, barajas.top());
-            barajas.pop();
-
-        }
-       for(int j=0;j<toret.size();j++){
-       barajas.push(toret.get(j));
-       
-       }
-        
+    
 
     }
 
