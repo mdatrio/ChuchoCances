@@ -4,8 +4,8 @@
  *                o la mueve encima de otra carta del interior
  */
 package solitario.Core;
-
-/**
+// SOMOZA ERES UN IMBERBE DE MERDA
+/**manupe cagon
  *
  * @author AEDI
  */
